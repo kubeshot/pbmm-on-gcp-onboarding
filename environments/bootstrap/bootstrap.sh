@@ -81,13 +81,13 @@ if [[ -z "$USER" ]]; then
   auth
 fi
 # Set Vars for Permissions application
-ORGID=$(gcloud organizations list --format="get(name)" --filter=displayName=$DOMAIN)
+ORGID=252632484771 #$(gcloud organizations list --format="get(name)" --filter=displayName=$DOMAIN)
 ROLES=("roles/billing.projectManager" "roles/orgpolicy.policyAdmin" "roles/resourcemanager.folderCreator" "roles/resourcemanager.organizationViewer" "roles/resourcemanager.projectCreator" "roles/billing.projectManager" "roles/billing.viewer")
 
 # Loop through each Role in Roles and apply to Organization node. 
 echo "INFO - Applying roles to Organization Node"
 for i in "${ROLES[@]}" ; do
-  gcloud organizations add-iam-policy-binding $ORGID  --member=user:$USER --role=$i --quiet > /dev/null 1>&1
+  gcloud organizations add-iam-policy-binding $ORGID  --member=user:$USER --role=$i --condition=None --quiet > /dev/null 1>&1
 done
 }
 

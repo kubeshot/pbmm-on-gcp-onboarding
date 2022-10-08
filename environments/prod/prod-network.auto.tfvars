@@ -19,7 +19,7 @@
 prod_host_net = {
   user_defined_string            = "prod" # Must be globally unique. Used to create project name
   additional_user_defined_string = "host1"
-  billing_account                = "REPLACE_WITH_BILLING_ID" ######-######-###### # required
+  billing_account                = "01F01C-EC0BAC-DD9482" ######-######-###### # required
   services                       = ["logging.googleapis.com"]
   networks = [
     {

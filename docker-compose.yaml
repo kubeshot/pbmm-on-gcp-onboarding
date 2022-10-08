@@ -1,0 +1,10 @@
+ version: "3.7"
+
+ services:
+   pbmm-kube:
+     build:
+      context: .
+     volumes:
+      - ../pbmm-on-gcp-onboarding:/workspace/PBMM
+      - ~/.ssh:/root/.ssh
+      - ~/.config:/root/.config
