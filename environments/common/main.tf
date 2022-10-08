@@ -218,45 +218,45 @@ module "net-public-perimeter-firewall" {  #net-perimeter-prj-firewall
 #################################################
 #          VPN MODULE { DEV }                   #
 #################################################
-module "vpn_ha" {
-  source = "../../..//modules/vpn_ha"
-  project_id  = 
-  region  = 
-  network         = "https://www.googleapis.com/compute/v1/projects/<PROJECT_ID>/global/networks/my-network"
-  name            = "mynet-to-onprem"
-  peer_external_gateway = {
-      redundancy_type = "SINGLE_IP_INTERNALLY_REDUNDANT"
-      interfaces = [{
-          id = 0
-          ip_address = "8.8.8.8" # on-prem router ip address
+# module "vpn_ha" {
+#   source = "../../..//modules/vpn_ha"
+#   project_id  = 
+#   region  = 
+#   network         = "https://www.googleapis.com/compute/v1/projects/<PROJECT_ID>/global/networks/my-network"
+#   name            = "mynet-to-onprem"
+#   peer_external_gateway = {
+#       redundancy_type = "SINGLE_IP_INTERNALLY_REDUNDANT"
+#       interfaces = [{
+#           id = 0
+#           ip_address = "8.8.8.8" # on-prem router ip address
 
-      }]
-  }
-  router_asn = 64514
-  tunnels = {
-    remote-0 = {
-      bgp_peer = {
-        address = "169.254.1.1"
-        asn     = 64513
-      }
-      bgp_peer_options  = null
-      bgp_session_range = "169.254.1.2/30"
-      ike_version       = 2
-      vpn_gateway_interface = 0
-      peer_external_gateway_interface = 0
-      shared_secret     = "mySecret"
-    }
-    remote-1 = {
-      bgp_peer = {
-        address = "169.254.2.1"
-        asn     = 64513
-      }
-      bgp_peer_options  = null
-      bgp_session_range = "169.254.2.2/30"
-      ike_version       = 2
-      vpn_gateway_interface = 1
-      peer_external_gateway_interface = 0
-      shared_secret     = "mySecret"
-    }
-  }
-}
+#       }]
+#   }
+#   router_asn = 64514
+#   tunnels = {
+#     remote-0 = {
+#       bgp_peer = {
+#         address = "169.254.1.1"
+#         asn     = 64513
+#       }
+#       bgp_peer_options  = null
+#       bgp_session_range = "169.254.1.2/30"
+#       ike_version       = 2
+#       vpn_gateway_interface = 0
+#       peer_external_gateway_interface = 0
+#       shared_secret     = "mySecret"
+#     }
+#     remote-1 = {
+#       bgp_peer = {
+#         address = "169.254.2.1"
+#         asn     = 64513
+#       }
+#       bgp_peer_options  = null
+#       bgp_session_range = "169.254.2.2/30"
+#       ike_version       = 2
+#       vpn_gateway_interface = 1
+#       peer_external_gateway_interface = 0
+#       shared_secret     = "mySecret"
+#     }
+#   }
+# }
